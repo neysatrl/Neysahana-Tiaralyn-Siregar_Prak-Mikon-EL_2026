@@ -44,18 +44,16 @@ void loop() {
   display.print(a.acceleration.y);
   display.println(" m/s^2");
 
-  // Logika Pengondisian:
-  // Jika posisi sensor miring (sumbu X atau Y melebihi batas 3.0 m/s^2)
   if (abs(a.acceleration.x) > 3.0 || abs(a.acceleration.y) > 3.0) {
     display.setCursor(0, 36);
     display.setTextSize(2);
     display.print("MIRING");
-    digitalWrite(BUZZER_PIN, HIGH); // Buzzer Menyala
+    digitalWrite(BUZZER_PIN, HIGH); 
   } else {
     display.setCursor(0, 36);
     display.setTextSize(2);
     display.print("DATAR");
-    digitalWrite(BUZZER_PIN, LOW);  // Buzzer Mati
+    digitalWrite(BUZZER_PIN, LOW); 
   }
 
   display.display();
