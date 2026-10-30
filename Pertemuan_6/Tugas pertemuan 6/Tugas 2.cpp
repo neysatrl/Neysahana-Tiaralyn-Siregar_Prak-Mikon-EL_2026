@@ -20,13 +20,12 @@ float bacaKemiringan(float &nilaiAccelY) {
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
   nilaiAccelY = a.acceleration.y;
-  float roll = atan2(a.acceleration.y, a.acceleration.z) * 180.0 / PI; // (1) percepatan sumbu Y lalu sumbu Z[cite: 4, 10]
-  return abs(roll); // (2) nilai mutlak dari roll[cite: 4, 10]
+  float roll = atan2(a.acceleration.y, a.acceleration.z) * 180.0 / PI; // (1) percepatan sumbu Y lalu sumbu Z
 }
 
 String tentukanStatus(float sudut) {
-  if (sudut > 35.0) return "BAHAYA"; // (3) batas sudut status BAHAYA: 35 derajat[cite: 4, 10]
-  else if (sudut >= 15.0) return "SEDANG"; // (4) batas sudut status SEDANG: 15 derajat[cite: 4, 10]
+  if (sudut > 35.0) return "BAHAYA"; // (3) batas sudut status BAHAYA: 35 derajat
+  else if (sudut >= 15.0) return "SEDANG"; // (4) batas sudut status SEDANG: 15 derajat
   else return "DATAR";
 }
 
@@ -79,7 +78,7 @@ void handleData() {
 void setup() {
   Serial.begin(115200);
 
-  if (!mpu.begin()) { // (5) fungsi untuk memulai sensor MPU6050[cite: 4, 11]
+  if (!mpu.begin()) { // (5) fungsi untuk memulai sensor MPU6050
     Serial.println("Gagal menemukan sensor MPU6050! Cek kabel SDA(21) & SCL(22).");
     while (1) { delay(10); }
   }
@@ -94,7 +93,7 @@ void setup() {
   Serial.println("\nTerhubung! IP Address: " + WiFi.localIP().toString());
 
   server.on("/", []() { server.send(200, "text/html", index_html); });
-  server.on("/data", handleData); // (6) path yang dipanggil fetch() di halaman web[cite: 4, 11]
+  server.on("/data", handleData); // (6) path yang dipanggil fetch() di halaman web
   server.begin();
 }
 
