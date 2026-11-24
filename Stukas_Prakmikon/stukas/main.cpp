@@ -12,7 +12,7 @@ Adafruit_SSD1306 display(128, 64, &Wire, -1);
 const char* ssid = "IphoNe";
 const char* password = "Neysahana123";
 
-const int potpin = 34;.
+const int potpin = 34;
 const int ledpin = 18;
 
 String apiKey = "WRITE_API_KEY_THINGSPEAK"; // GANTI dengan API Key kalian
